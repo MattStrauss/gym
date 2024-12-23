@@ -9,4 +9,11 @@ class Workout extends Model
 {
     /** @use HasFactory<\Database\Factories\WorkoutFactory> */
     use HasFactory;
+
+    protected $fillable = ['name', 'description', 'image_url'];
+
+    public function exercises()
+    {
+        return $this->belongsToMany(Exercise::class);
+    }
 }

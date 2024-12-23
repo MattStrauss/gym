@@ -2,6 +2,7 @@
 
 namespace Database\Factories;
 
+use App\Models\Equipment;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -20,7 +21,7 @@ class ExerciseFactory extends Factory
             'name' => $this->faker->word,
             'description' => $this->faker->sentence,
             'image_url' => $this->faker->imageUrl(),
-            'equipment_id' => EquipmentFactory::factory()->create()->id,
+            'equipment_id' => Equipment::factory()->create()->id,
         ];
     }
 }
