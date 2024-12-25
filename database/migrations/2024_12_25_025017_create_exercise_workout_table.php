@@ -15,6 +15,8 @@ return new class extends Migration
             $table->id();
             $table->unsignedBigInteger('exercise_id');
             $table->unsignedBigInteger('workout_id');
+            $table->integer('reps');
+            $table->integer('weight');
             $table->timestamps();
         });
     }
