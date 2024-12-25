@@ -4,6 +4,7 @@ namespace Database\Seeders;
 
 use App\Models\User;
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+use App\Models\Workout;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
@@ -20,5 +21,13 @@ class DatabaseSeeder extends Seeder
             'email' => 'matt@example.net',
             'password' => bcrypt('password'),
         ]);
+
+        Workout::factory(10)->create([
+            'user_id' => 1,
+        ]);
+
+        Workout::factory(10)->create();
+
+
     }
 }
