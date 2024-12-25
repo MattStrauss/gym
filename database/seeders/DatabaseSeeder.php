@@ -9,6 +9,7 @@ use App\Models\User;
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use App\Models\Workout;
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\DB;
 
 class DatabaseSeeder extends Seeder
 {
@@ -35,7 +36,7 @@ class DatabaseSeeder extends Seeder
         foreach ($workouts as $workout) {
             $workout->exercises()->attach($exercises->random(), [
                 'reps' => rand(5, 15),
-                'weight' => rand(50, 200),
+                'weight' => rand(10, 200),
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -109,7 +110,7 @@ class DatabaseSeeder extends Seeder
         ];
 
         foreach ($exercises as $name => $description) {
-            Exercise::factory()->create([
+            DB::table('exercises')->insert([
                 'name' => $name,
                 'description' => $description,
                 'muscle_group_id' => MuscleGroup::where('name', $muscleGroupMapping[$name])->first()->id,
