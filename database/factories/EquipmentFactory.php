@@ -12,7 +12,7 @@ class EquipmentFactory extends Factory
             // need this to be something unique
             'name' => $this->faker->unique()->words,
             'description' => $this->faker->sentence,
-            'image_url' => $this->faker->imageUrl(),
+            'image_url' => $this->faker->optional()->imageUrl(),
         ];
     }
 }

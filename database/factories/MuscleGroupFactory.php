@@ -11,7 +11,7 @@ class MuscleGroupFactory extends Factory
         return [
             'name' => $this->faker->unique()->word,
             'description' => $this->faker->sentence,
-            'image_url' => $this->faker->imageUrl(),
+            'image_url' => $this->faker->optional()->imageUrl(),
         ];
     }
 }

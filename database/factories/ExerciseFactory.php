@@ -13,9 +13,9 @@ class ExerciseFactory extends Factory
         return [
             'name' => $this->faker->unique()->words,
             'description' => $this->faker->sentence,
-            'image_url' => $this->faker->imageUrl(),
-            'equipment_id' => Equipment::factory()->create()->id,
-            'muscle_group_id' => MuscleGroup::factory()->create()->id,
+            'image_url' => $this->faker->optional()->imageUrl(),
+            'equipment_id' => 1,
+            'muscle_group_id' => 1,
         ];
     }
 }
