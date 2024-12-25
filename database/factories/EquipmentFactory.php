@@ -9,8 +9,7 @@ class EquipmentFactory extends Factory
     public function definition(): array
     {
         return [
-            // need this to be something unique
-            'name' => $this->faker->unique()->words,
+            'name' => $this->faker->unique()->word,
             'description' => $this->faker->sentence,
             'image_url' => $this->faker->optional()->imageUrl(),
         ];

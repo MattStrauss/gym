@@ -9,7 +9,6 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class Exercise extends Model
 {
-    /** @use HasFactory<\Database\Factories\ExerciseFactory> */
     use HasFactory;
 
     protected $fillable = ['name', 'description', 'image_url', 'equipment_id'];

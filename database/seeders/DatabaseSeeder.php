@@ -37,6 +37,8 @@ class DatabaseSeeder extends Seeder
             $workout->exercises()->attach($exercises->random(), [
                 'reps' => rand(5, 15),
                 'weight' => rand(50, 200),
+                'created_at' => now(),
+                'updated_at' => now(),
             ]);
         }
     }

@@ -11,11 +11,11 @@ class ExerciseFactory extends Factory
     public function definition(): array
     {
         return [
-            'name' => $this->faker->unique()->words,
+            'name' => $this->faker->unique()->word,
             'description' => $this->faker->sentence,
             'image_url' => $this->faker->optional()->imageUrl(),
-            'equipment_id' => 1,
-            'muscle_group_id' => 1,
+            'muscle_group_id' => MuscleGroup::factory()->create()->id,
+            'equipment_id' => Equipment::factory()->create()->id,
         ];
     }
 }

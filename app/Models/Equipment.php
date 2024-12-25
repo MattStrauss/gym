@@ -8,7 +8,6 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class Equipment extends Model
 {
-    /** @use HasFactory<\Database\Factories\EquipmentFactory> */
     use HasFactory;
 
     protected $fillable = ['name', 'description', 'image_url'];

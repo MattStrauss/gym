@@ -11,7 +11,7 @@ class WorkoutFactory extends Factory
     {
         return [
             'user_id' => User::factory()->create()->id,
-            'name' => $this->faker->unique()->words,
+            'name' => $this->faker->unique()->word,
             'description' => $this->faker->sentence,
             'image_url' => $this->faker->optional()->imageUrl(),
             'completed_at' => $this->faker->optional()->dateTime(),
