@@ -24,7 +24,6 @@ class DatabaseSeeder extends Seeder
         $this->createMuscleGroups();
         $this->createExercises();
 
-
         Workout::factory(10)->create([
             'user_id' => 1,
         ]);
