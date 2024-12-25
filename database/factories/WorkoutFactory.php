@@ -22,6 +22,7 @@ class WorkoutFactory extends Factory
             'name' => $this->faker->word,
             'description' => $this->faker->sentence,
             'image_url' => $this->faker->imageUrl(),
+            'completed_at' => $this->faker->optional()->dateTime(),
         ];
     }
 }

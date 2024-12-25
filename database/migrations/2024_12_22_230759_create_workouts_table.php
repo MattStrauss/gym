@@ -17,6 +17,7 @@ return new class extends Migration
             $table->string('name');
             $table->text('description');
             $table->string('image_url');
+            $table->dateTime('completed_at')->nullable();
             $table->timestamps();
 
             $table->foreign('user_id')->references('id')->on('users');
