@@ -15,12 +15,9 @@ class WorkoutFactory extends Factory
     {
         $startedAt = $this->faker->dateTime();
         $carbonStartedAt = new Carbon($startedAt);
-        // we'll make it a 93% chance that the workout is completed
         $wasCompleted = $this->faker->boolean(93);
         $completedAt = null;
-        if ($wasCompleted) {
-            $completedAt = $carbonStartedAt->addMinutes($this->faker->numberBetween(30, 150));
-        }
+        if ($wasCompleted) $completedAt = $carbonStartedAt->addMinutes($this->faker->numberBetween(30, 150));
 
         return [
             'user_id' => User::factory()->create()->id,
