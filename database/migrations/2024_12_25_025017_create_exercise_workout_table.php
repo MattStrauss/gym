@@ -17,6 +17,13 @@ return new class extends Migration
             $table->unsignedBigInteger('workout_id');
             $table->integer('reps');
             $table->integer('weight');
+            $table->boolean('is_drop_set')->default(false);
+            $table->unsignedInteger('super_set_number')->nullable();
+
+            $table->foreign('exercise_id')->references('id')->on('exercises')
+                ->onDelete('cascade');
+            $table->foreign('workout_id')->references('id')->on('workouts')
+                ->onDelete('cascade');
             $table->timestamps();
         });
     }

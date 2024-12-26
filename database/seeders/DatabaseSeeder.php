@@ -25,9 +25,13 @@ class DatabaseSeeder extends Seeder
         $this->createMuscleGroups();
         $this->createExercises();
 
-        Workout::factory(10)->create([
-            'user_id' => 1,
-        ]);
+        foreach (range(1, 10) as $index) {
+            Workout::factory()->create([
+                'user_id' => 1,
+                'name' => "Workout $index",
+            ]);
+        }
+
 
         // add some exercises to the workouts
         $workouts = Workout::all();
