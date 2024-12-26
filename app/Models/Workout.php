@@ -10,14 +10,15 @@ class Workout extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['name', 'description', 'image_url', 'completed_at'];
+    protected $fillable = ['name', 'description', 'image_url', 'started_at', 'completed_at'];
 
     protected $casts = [
+        'started_at' => 'datetime',
         'completed_at' => 'datetime',
     ];
 
     public function exercises(): BelongsToMany
     {
-        return $this->belongsToMany(Exercise::class)->withPivot('reps', 'weight');
+        return $this->belongsToMany(Exercise::class)->withPivot('reps', 'weight', 'is_drop_set', 'super_set_number');
     }
 }
