@@ -2,6 +2,7 @@
 
 namespace App\Livewire;
 
+use Carbon\Carbon;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\DB;
 use Illuminate\View\View;
@@ -22,26 +23,30 @@ class PastWorkouts extends Component
     {
         $workouts = DB::table('workouts')
             ->select('name', 'completed_at', 'started_at', 'workouts.id', 'exercise_workout.reps',
-                'exercise_workout.sets', 'exercise_workout.weight')
+                'exercise_workout.weight')
             ->where('user_id', auth()->id())
             ->whereNotNull('completed_at')
             ->orderBy('completed_at', 'desc')
             ->join('exercise_workout', 'workouts.id', '=', 'exercise_workout.workout_id')
-            ->get()->groupBy('workouts.id')->map(function ($workout) {
-                return [
+            ->get()->groupBy('id')->map(function ($workout) {
+                $duration = 'in progress';
+                if ($workout->first()->completed_at) {
+                    $duration = Carbon::parse($workout->first()->completed_at)
+                        ->diffForHumans(Carbon::parse($workout->first()->started_at), true);
+                }
+
+                $workoutArray = [
+                    'id' => $workout->first()->id,
                     'name' => $workout->first()->name,
-                    // the duration is the workout cre
-                    'duration' => $workout->first()->duration,
-                    'completed_at' => $workout->first()->completed_at,
-                    'created_at' => $workout->first()->created_at,
-                    'exercises' => $workout->map(function ($exercise) {
-                        return [
-                            'reps' => $exercise->reps,
-                            'sets' => $exercise->sets,
-                            'weight' => $exercise->weight,
-                        ];
-                    }),
+                    'duration' => $duration,
+                    'completed_at' => Carbon::parse($workout->first()->completed_at),
+                    'reps' => $workout->sum('reps'),
+                    'total_weight' => $workout->sum('weight'),
                 ];
+
+                return (object) $workoutArray;
             });
+
+        $this->workouts = $workouts->sortBy('completed_at');
     }
 }
