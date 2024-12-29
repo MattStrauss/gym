@@ -46,6 +46,9 @@ class DatabaseSeeder extends Seeder
                     'updated_at' => now(),
                 ]);
             }
+            $muscleGroupsWorkedIds = $workout->exercises->pluck('muscle_group_id')->unique();
+            $muscleGroupNames = MuscleGroup::whereIn('id', $muscleGroupsWorkedIds)->pluck('name')->implode(', ');
+            $workout->update(['name' => "$muscleGroupNames Workout"]);
         }
     }
 
