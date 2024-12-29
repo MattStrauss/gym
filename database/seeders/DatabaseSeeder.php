@@ -39,12 +39,14 @@ class DatabaseSeeder extends Seeder
         foreach ($workouts as $workout) {
             $numberOfExercises = rand(2, 6);
             for ($i = 0; $i < $numberOfExercises; $i++) {
-                $workout->exercises()->attach($exercises->random(), [
-                    'reps' => rand(5, 15),
-                    'weight' => rand(10, 200),
-                    'created_at' => now(),
-                    'updated_at' => now(),
-                ]);
+                $exercise = $exercises->random();
+                $numberOfSets = rand(3, 5);
+                for ($j = 0; $j < $numberOfSets; $j++) {
+                    $workout->exercises()->attach($exercise, [
+                        'reps' => rand(2, 12),
+                        'weight' => rand(20, 100),
+                    ]);
+                }
             }
             $muscleGroupsWorkedIds = $workout->exercises->pluck('muscle_group_id')->unique();
             $muscleGroupNames = MuscleGroup::whereIn('id', $muscleGroupsWorkedIds)->pluck('name')->implode(', ');
