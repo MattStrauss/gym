@@ -1,6 +1,6 @@
 <div>
     <h2 class="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight">
-        {{ $wokout->name }}
+        {{ $workout->name }}
     </h2>
 
     <div class="py-12">
@@ -10,10 +10,10 @@
                     <div class="flex justify-between">
                         <div>
                             <h3 class="font-semibold text-lg text-gray-800 dark:text-gray-200 leading-tight">
-                                {{ $wokout->name }}
+                                {{ $workout->name }}
                             </h3>
                             <p class="text-gray-600 dark:text-gray-400">
-                                {{ $wokout->description }}
+                                {{ $workout->description }}
                             </p>
                         </div>
                         <div>
@@ -25,7 +25,7 @@
                             Exercises
                         </h4>
                         <ul class="mt-2">
-                            @foreach ($wokout->exercises as $exercise)
+                            @foreach ($workout->exercises as $exercise)
                                 <li class="flex justify-between">
                                     <div>
                                         <h5 class="font-semibold text-md text-gray-800 dark:text-gray-200 leading-tight">

@@ -13,7 +13,7 @@ class ViewWorkout extends Component
 
     public function mount(Workout $workout): void
     {
-        $this->workout = $workout;
+        $this->workout = $workout->load('exercises');
         $this->title = $workout->name;
     }
 
