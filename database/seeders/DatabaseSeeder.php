@@ -31,7 +31,7 @@ class DatabaseSeeder extends Seeder
                 'name' => "Workout $index",
             ]);
         }
-        
+
         // add some exercises to the workouts
         $workouts = Workout::all();
         $exercises = Exercise::all();

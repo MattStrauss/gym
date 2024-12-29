@@ -10,7 +10,7 @@
                     <th class="text-left">Name</th>
                     <th class="text-left">Completed at</th>
                     <th class="text-left">Duration</th>
-                    <th class="text-left"># Reps</th>
+                    <th class="text-left">Total Reps</th>
                     <th class="text-left">Total Weight</th>
                     <th class="text-left">View</th>
                 </tr>
@@ -24,7 +24,7 @@
                         <td>{{ $workout->reps }}</td>
                         <td>{{ $workout->total_weight }}</td>
                         <td class="flex">
-                            <a href="#">
+                            <a href="workouts/{{ $workout->id }}">
                                 <x-heroicon-o-arrow-right-end-on-rectangle class="cursor-pointer ml-2 w-8 h-8" />
                             </a>
                         </td>
