@@ -1,6 +1,7 @@
+
 <div>
     <h2 class="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight">
-        {{ $workout->name }}
+        Exercise Details
     </h2>
 
     <div class="py-6">
@@ -8,9 +9,6 @@
             <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-3 text-gray-900 dark:text-gray-100">
                     <div class="mt-2">
-                        <h4 class="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight">
-                            Exercises
-                        </h4>
                         <ul class="mt-2 grid grid-cols-4 gap-4">
                             @foreach ($exercises as $exerciseName => $sets)
                                 <li class="py-2">
@@ -39,3 +37,4 @@
         </div>
     </div>
 </div>
+

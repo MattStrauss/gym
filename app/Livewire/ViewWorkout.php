@@ -39,6 +39,6 @@ class ViewWorkout extends Component
 
     public function render(): View
     {
-        return view('livewire.view-workout');
+        return view('livewire.view-workout')->title($this->title);
     }
 }
