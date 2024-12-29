@@ -1,6 +1,5 @@
 <div>
-    <div class="flex justify-between items-center mb-3">
-        <h1 class="text-2xl font-bold">Past Workouts</h1>
+    <div class="flex float-end items-center mb-3">
         <a href="#" class="bg-red-700 hover:bg-red-500 text-white font-bold py-2 px-4 rounded">New Workout</a>
     </div>
     <div class="mt-4">
