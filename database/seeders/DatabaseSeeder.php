@@ -38,12 +38,15 @@ class DatabaseSeeder extends Seeder
         $exercises = Exercise::all();
 
         foreach ($workouts as $workout) {
-            $workout->exercises()->attach($exercises->random(), [
-                'reps' => rand(5, 15),
-                'weight' => rand(10, 200),
-                'created_at' => now(),
-                'updated_at' => now(),
-            ]);
+            $numberOfExercises = rand(2, 6);
+            for ($i = 0; $i < $numberOfExercises; $i++) {
+                $workout->exercises()->attach($exercises->random(), [
+                    'reps' => rand(5, 15),
+                    'weight' => rand(10, 200),
+                    'created_at' => now(),
+                    'updated_at' => now(),
+                ]);
+            }
         }
     }
 
